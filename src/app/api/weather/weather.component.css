@@ -1,0 +1,3 @@
+svg > rect {  /*#salesChart is ID of your google chart*/
+    fill: rgb(5, 4, 4);
+}

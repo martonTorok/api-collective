@@ -1,0 +1,22 @@
+<loading-spinner *ngIf="showSpinner"></loading-spinner>
+<not-found *ngIf="showNotFound"></not-found>
+<div *ngIf="showDetails">
+<h3>{{ showDetails?.name}}</h3><span class="badge badge-success" *ngFor="let genre of showDetails?.genres">{{ genre.name }} </span>
+<hr>
+<p>{{ showDetails?.overview }}</p>
+
+<p>Duration: <b>{{ showDetails?.episode_run_time}} min </b></p>
+
+<p>Last episode aired: <b>{{ showDetails?.last_episode_to_air.air_date}}</b></p>
+
+<a href="{{showDetails?.homepage}}">Visit homepage</a>
+<hr>
+<p>Similar shows:</p>
+<ul>
+  <li *ngFor="let show of similarShows?.results"><a [routerLink]="['/shows', show?.id]">{{ show?.name}}</a></li>
+</ul>
+
+
+
+</div>
+

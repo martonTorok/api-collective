@@ -1,0 +1,11 @@
+a {
+    cursor: pointer;
+}
+
+footer {
+    background-color: black;
+}
+
+.active>nav-link {
+    color: white !important;
+}

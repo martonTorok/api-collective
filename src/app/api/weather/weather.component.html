@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="weatherForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group has-danger">
+            <label for="citySearch" class="form-control-label">
+              Search by city
+            </label>
+            <input type="text" id="citySearch" formControlName="citySearch" class="form-control" placeholder="e.g. Budapest"
+              [ngClass]="{'is-invalid': !isValidCity, 'is-valid':isValidCity}">
+            <div class="invalid-feedback">Invalid city name. Try another?</div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<h3>Current Weather</h3>
+<loading-spinner *ngIf="showSpinner"></loading-spinner>
+<div class="container" *ngIf="currentWeatherData; else loading">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+        <div class="card-header">{{ currentWeatherData?.name }}, {{ currentWeatherData?.sys.country}}</div>
+        <div class="card-body">
+          <h4 class="card-title">{{currentDate | date:'fullDate'}}</h4>
+          <p class="card-text">Current: <b>{{ currentWeatherData?.main.temp }} °C</b></p>
+          <p class="card-text">Min: <b>{{ currentWeatherData?.main.temp_min }} °C</b></p>
+          <p class="card-text">Max: <b>{{ currentWeatherData?.main.temp_max }} °C</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>5 Day Forecast ( °C )</h3>
+
+  <div *ngIf="chart">
+      <canvas id="canvas">{{ chart }}</canvas>
+    </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th scope="col">Avg</th>
+        <th scope="col">Min</th>
+        <th scope="col">Max</th>
+        <th scope="col">Humidity</th>
+        <th scope="col">Cloudiness</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let day of fiveDayWeatherData?.list; i as index">
+        <td scope="row">{{ day?.dt_txt | date:'medium' }}</td>
+        <td>{{ day?.main.temp }} °C</td>
+        <td>{{ day?.main.temp_min }} °C</td>
+        <td>{{ day?.main.temp_max }} °C</td>
+        <td>{{ day?.main.humidity }} %</td>
+        <td>{{ day?.clouds.all }} %</td>
+      </tr>
+    </tbody>
+  </table>
+

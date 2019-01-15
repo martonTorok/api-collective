@@ -1,0 +1,19 @@
+<h2>Popular TV Shows</h2>
+
+<div class="row">
+  <div class="col-sm-6">
+    <loading-spinner *ngIf="showSpinner"></loading-spinner>
+    <ngb-pagination *ngIf="shows" [collectionSize]="collectionSize" [(page)]="currentPage" [boundaryLinks]="true" [rotate]="true"
+      [ellipses]="false" [maxSize]="6" [pageSize]="20" (pageChange)="loadPage($event)">
+    </ngb-pagination>
+    <div class="list-group">
+      <a *ngFor="let show of shows?.results" [routerLink]="['/shows', show?.id]" class="list-group-item list-group-item-action"
+        (click)="onSelect($event)">{{
+        show?.name }}</a>
+    </div>
+
+  </div>
+  <div class="col-sm-6">
+    <router-outlet></router-outlet>
+  </div>
+</div>

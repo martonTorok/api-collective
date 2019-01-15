@@ -1,0 +1,14 @@
+<loading-spinner *ngIf="showSpinner"></loading-spinner>
+<div class="container" *ngIf="apod">
+  <div class="row">
+    <div class="col title">
+      <h3>Picture of the day</h3>
+      <h4>{{apod?.title}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <img [src]="apod?.url">
+    </div>
+  </div>
+</div>

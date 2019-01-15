@@ -1,0 +1,15 @@
+img {
+    height: 100vh;
+
+}
+
+.container {
+    margin: auto;
+    width: 100vh;
+    max-width: 100vw;
+    min-width: 500px;
+}
+
+.row {
+    text-align: center;
+}
