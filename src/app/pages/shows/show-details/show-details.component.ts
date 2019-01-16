@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShowsService } from '../shows.service';
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { ActivatedRoute, Params } from '@angular/router';
   templateUrl: './show-details.component.html',
   styleUrls: ['./show-details.component.css']
 })
-export class ShowDetailsComponent implements OnInit {
+export class ShowDetailsComponent implements OnInit, OnDestroy {
   showDetails: Object;
   similarShows: Object;
   id: number;
@@ -18,7 +18,7 @@ export class ShowDetailsComponent implements OnInit {
   constructor(private showsService: ShowsService,
     private route: ActivatedRoute) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.params
       .subscribe((params: Params) => {
         this.id = +params['id'];
@@ -32,8 +32,10 @@ export class ShowDetailsComponent implements OnInit {
     this.selected = +localStorage.getItem('selectedId');
   }
 
-  getShowById(id: number) {
-    this.showsService.getShowById(id)
+  ngOnDestroy() { }
+
+  getShowById(id: number): void {
+    this.showsService.getShowById$(id)
       .subscribe(data => {
         this.showDetails = data;
         this.showSpinner = false;
@@ -46,8 +48,8 @@ export class ShowDetailsComponent implements OnInit {
         })
   }
 
-  getSimilarShowsById(id: number) {
-    this.showsService.getSimilarShowsById(id)
+  getSimilarShowsById(id: number): void {
+    this.showsService.getSimilarShowsById$(id)
       .subscribe(data => {
         this.similarShows = data;
         this.showSpinner = false;

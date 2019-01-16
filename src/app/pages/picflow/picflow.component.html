@@ -1,0 +1,9 @@
+<div class="image col-sm-12" *ngFor="let image of pictureData?.photos; let i = index" (deferLoad)="image.show = true">
+  
+    <ng-container *ngIf="image.show">
+      <loading-spinner *ngIf="isLoaded(i)"></loading-spinner>
+      <img [hidden]="isLoaded(i)" (load)="onLoad(i)" src="{{image?.src.original}}" class="pexelPic">
+    </ng-container>
+  
+  <hr>
+</div>

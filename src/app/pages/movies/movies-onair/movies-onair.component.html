@@ -1,0 +1,47 @@
+<div class="tab-pane fade show active" id="onair">
+  <loading-spinner *ngIf="showLoadingSpinner"></loading-spinner>
+
+
+  <div class="card-deck">
+    <div class="card" *ngFor="let movie of movies?.results.slice(0, 4)">
+      <img class="card-img-top" 
+      (load)="onLoad()"
+      src="{{movie?.poster_path == null ? '' : 'https://image.tmdb.org/t/p/original' + movie?.poster_path}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ movie?.title}}</h5>
+        <p class="card-text">{{ movie?.overview}}</p>
+        <p class="card-text"><small class="text-muted">Released: {{movie?.release_date}}</small></p>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="card-deck">
+    <div class="card" *ngFor="let movie of movies?.results.slice(4, 8)">
+      <img class="card-img-top"
+      (load)="onLoad()"
+       src=
+       "{{movie?.poster_path == null ? '' : 'https://image.tmdb.org/t/p/original' + movie?.poster_path}}"
+        alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ movie?.title}}</h5>
+        <p class="card-text">{{ movie?.overview}}</p>
+        <p class="card-text"><small class="text-muted">Released: {{movie?.release_date}}</small></p>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="card-deck">
+    <div class="card" *ngFor="let movie of movies?.results.slice(8, 12)">
+      <img class="card-img-top"
+      (load)="onLoad()"
+      src="{{movie?.poster_path == null ? '' : 'https://image.tmdb.org/t/p/original' + movie?.poster_path}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ movie?.title}}</h5>
+        <p class="card-text">{{ movie?.overview}}</p>
+        <p class="card-text"><small class="text-muted">Released: {{movie?.release_date}}</small></p>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+</div>

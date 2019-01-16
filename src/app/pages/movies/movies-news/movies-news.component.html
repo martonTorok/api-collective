@@ -1,0 +1,17 @@
+<div class="tab-pane fade show active" id="news" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollUpDistance]="1.5"
+  [infiniteScrollThrottle]="50" (scrolled)="onScrollDown()">
+  <loading-spinner *ngIf="showLoadingSpinner"></loading-spinner>
+  <div *ngFor="let grp of news">
+    <div class="card" *ngFor="let result of grp?.articles">
+      <div class="card-body">
+        <h4 class="card-title">{{ result?.title}}</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{result?.author}}, {{ result?.source.name}}</h6>
+        <p class="card-text">{{result?.description}}</p>
+        <a target="_blank" rel="noopener noreferrer" href="{{result?.url}}" class="card-link">Read more</a>
+      </div>
+      <div class="card-footer text-muted">
+        {{result?.publishedAt | date:'medium'}}
+      </div>
+    </div>
+  </div>
+</div>

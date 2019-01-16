@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { AuthService } from 'src/auth/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ShowsService } from 'src/app/api/shows/shows.service';
+import { ShowsService } from 'src/app/pages/shows/shows.service';
 
 @Component({
   selector: 'app-header',
@@ -16,14 +16,14 @@ export class HeaderComponent implements OnInit {
 
   constructor(private authService: AuthService, private showsService: ShowsService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.searchForm = new FormGroup({
       'search': new FormControl(null, Validators.required)
     })
     this.getSelectedShowId();
   }
 
-  getSelectedShowId() {
+  getSelectedShowId(): void {
     this.showsService.getSelectedId()
       .subscribe(id => {
         this.selectedShowId = id;
@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
       })
   }
 
-  onUtilityDropdown() {
+  onUtilityDropdown(): void {
     if (!this.showUtilityMenu) {
       this.showEntertainmentMenu = false;
       this.showUtilityMenu = true;
@@ -41,19 +41,19 @@ export class HeaderComponent implements OnInit {
       this.showUtilityMenu = false;
     }
   }
-  closeDropdowns() {
+  closeDropdowns(): void {
     this.showEntertainmentMenu = false;
     this.showUtilityMenu = false;
   }
 
-  onUtilityItem() {
+  onUtilityItem(): void {
     if (!this.showUtilityMenu) {
       this.showUtilityMenu = true;
     } else {
       this.showUtilityMenu = false;
     }
   }
-  onEntertainmentDropdown() {
+  onEntertainmentDropdown(): void {
     if (!this.showEntertainmentMenu) {
       this.showUtilityMenu = false;
       this.showEntertainmentMenu = true;
@@ -62,18 +62,18 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  onEntertainmentItem() {
+  onEntertainmentItem(): void {
     if (!this.showEntertainmentMenu) {
       this.showEntertainmentMenu = true;
     } else {
       this.showEntertainmentMenu = false;
     }
   }
-  onLogin() {
+  onLogin(): void {
     this.authService.signInWithGoogle();
   }
 
-  onLogout() {
+  onLogout(): void {
     this.authService.logout();
   }
 

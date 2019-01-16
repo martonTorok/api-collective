@@ -1,0 +1,16 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link"  [routerLink]="['/movies', 'news']" routerLinkActive="active" data-toggle="tab">News</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/movies', 'onair']" routerLinkActive="active" data-toggle="tab">On Air</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/movies', 'trending']" routerLinkActive="active">Trending</a>
+  </li>
+
+</ul>
+
+<div id="myTabContent" class="tab-content" >
+    <router-outlet></router-outlet>
+</div>

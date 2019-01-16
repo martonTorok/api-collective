@@ -11,7 +11,7 @@ export class FooterComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.navigatorForm = new FormGroup({
       'navigator': new FormControl(null)
     })

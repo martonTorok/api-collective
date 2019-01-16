@@ -11,7 +11,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~7.1.0",
     "@angular/common": "~7.1.0",
     "@angular/compiler": "~7.1.0",
     "@angular/core": "~7.1.0",
@@ -20,12 +19,14 @@
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
     "@ng-bootstrap/ng-bootstrap": "^4.0.1",
+    "@trademe/ng-defer-load": "^2.0.0",
     "angularfire2": "^5.1.1",
     "bootstrap": "^4.2.1",
     "bootswatch": "^4.2.1",
     "chart.js": "^2.7.3",
     "core-js": "^2.5.4",
     "firebase": "^5.7.3",
+    "ngx-infinite-scroll": "^7.0.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

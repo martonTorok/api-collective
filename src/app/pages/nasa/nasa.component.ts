@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NasaService } from './nasa.service';
 
 @Component({
@@ -6,13 +6,21 @@ import { NasaService } from './nasa.service';
   templateUrl: './nasa.component.html',
   styleUrls: ['./nasa.component.css']
 })
-export class NasaComponent implements OnInit {
+export class NasaComponent implements OnInit, OnDestroy {
   apod: Object;
   showSpinner: boolean = true;
+  showLoadingSpinner: boolean = true;
+  loading: boolean = true
   constructor(private nasaService: NasaService) { }
 
-  ngOnInit() {
-    this.nasaService.getApod()
+  ngOnInit(): void {
+    this.getApod()
+  }
+
+  ngOnDestroy() { }
+
+  getApod() {
+    this.nasaService.getApod$()
       .subscribe(data => {
         this.apod = data;
         this.showSpinner = false;
@@ -20,6 +28,11 @@ export class NasaComponent implements OnInit {
         err => {
           console.error(err);
         });
+  }
+
+  onLoad(): void {
+    this.loading = false;
+    this.showLoadingSpinner = false;
   }
 
 }

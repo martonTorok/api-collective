@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MoviesService } from './movies.service';
 
 @Component({
   selector: 'app-movies',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
+  selectedMenu='';
 
-  constructor() { }
+  constructor(private moviesService: MoviesService) { }
 
   ngOnInit() {
+    
   }
+
+  
 
 }

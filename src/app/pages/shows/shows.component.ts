@@ -1,14 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShowsService } from './shows.service';
 import { Route, ActivatedRoute, Router, Event } from '@angular/router';
-import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-shows',
   templateUrl: './shows.component.html',
   styleUrls: ['./shows.component.css']
 })
-export class ShowsComponent implements OnInit {
+export class ShowsComponent implements OnInit, OnDestroy {
   shows: Object;
   totalPage: number;
   collectionSize: number;
@@ -18,17 +17,17 @@ export class ShowsComponent implements OnInit {
 
   constructor(private showsService: ShowsService,
     private route: ActivatedRoute,
-    private router: Router,
-    private viewportScroller: ViewportScroller) { }
+    private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.currentPage = localStorage.getItem('currentPage') ? +localStorage.getItem('currentPage') : 1;
     this.getPopularTVShows(this.currentPage);
   }
 
+  ngOnDestroy() {}
 
   getPopularTVShows(page: number): void {
-    this.showsService.getTopRatedTVShowsByPage(page)
+    this.showsService.getTopRatedTVShowsByPage$(page)
       .subscribe(data => {
         this.shows = data;
         this.totalPage = data['total_pages']
