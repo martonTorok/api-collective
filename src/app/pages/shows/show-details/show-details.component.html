@@ -1,19 +1,24 @@
 <loading-spinner *ngIf="showSpinner"></loading-spinner>
 <not-found *ngIf="showNotFound"></not-found>
 <div *ngIf="showDetails">
-<h3>{{ showDetails?.name}}</h3><span class="badge badge-success" *ngFor="let genre of showDetails?.genres">{{ genre.name }} </span>
+<h3>{{ showDetails?.name}}  <span class="badge badge-pill badge-warning">{{showDetails?.vote_average}}</span></h3>
+<span class="badge badge-success" *ngFor="let genre of showDetails?.genres">{{ genre.name }} </span>
 <hr>
 <p>{{ showDetails?.overview }}</p>
 
 <p>Duration: <b>{{ showDetails?.episode_run_time}} min </b></p>
 
-<p>Last episode aired: <b>{{ showDetails?.last_episode_to_air.air_date}}</b></p>
+<p>Nr. of seasons: <b>{{showDetails?.number_of_episodes}}</b></p>
+<p>Nr. of episodes: <b>{{showDetails?.number_of_seasons}}</b></p>
+
+<p>Last episode aired: <b>{{ showDetails?.last_air_date}}</b></p>
+
 
 <a *ngIf="showDetails?.homepage !=''" target="_blank" rel="noopener noreferrer" href="{{showDetails?.homepage}}">Visit homepage</a>
 <hr>
 <p>Similar shows:</p>
 <ul>
-  <li *ngFor="let show of similarShows?.results"><a [routerLink]="['/shows', show?.id]">{{ show?.name}}</a></li>
+  <li *ngFor="let show of similarShows"><a [routerLink]="['/shows', show?.id]" (click)="onSelectSimilar()">{{ show?.name}}</a></li>
 </ul>
 
 

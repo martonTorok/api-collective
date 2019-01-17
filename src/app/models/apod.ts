@@ -5,7 +5,8 @@ export class Apod {
 
     constructor(
         public title: string,
-        public url: string
+        public url: string,
+        public explanation: string
     ) {}
     
 }
@@ -17,7 +18,8 @@ export class ApodAdapter implements Adapter<Apod> {
     adapt(item: any): Apod {
         return new Apod(
             item.title,
-            item.url
+            item.url,
+            item.explanation
         )
     }
 }

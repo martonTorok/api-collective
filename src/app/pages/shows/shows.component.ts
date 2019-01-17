@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShowsService } from './shows.service';
 import { Route, ActivatedRoute, Router, Event } from '@angular/router';
+import { Show } from 'src/app/models/show';
 
 @Component({
   selector: 'app-shows',
@@ -8,9 +9,9 @@ import { Route, ActivatedRoute, Router, Event } from '@angular/router';
   styleUrls: ['./shows.component.css']
 })
 export class ShowsComponent implements OnInit, OnDestroy {
-  shows: Object;
-  totalPage: number;
-  collectionSize: number;
+  shows: Show[];
+  totalPage: number = 500;
+  collectionSize: number = 10000;
   currentPage: number;
   showSpinner: boolean = true;
   showNotFound: boolean = false;
@@ -27,12 +28,9 @@ export class ShowsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {}
 
   getPopularTVShows(page: number): void {
-    this.showsService.getTopRatedTVShowsByPage$(page)
+    this.showsService.getPopularTVShowsByPage$(page)
       .subscribe(data => {
         this.shows = data;
-        this.totalPage = data['total_pages']
-        this.collectionSize = data['total_results']
-        console.log(data);
         this.showSpinner = false;
       },
         err => {
@@ -50,7 +48,6 @@ export class ShowsComponent implements OnInit, OnDestroy {
 
   onSelect(event: Event): void {
     localStorage.setItem('selectedId', event['target']['pathname'].split('/')[2])
-    console.log(event)
     let scrollToTop = window.setInterval(() => {
       let pos = window.pageYOffset;
       if (pos > 0) {

@@ -10,7 +10,7 @@
     <div class="col">
       <loading-spinner *ngIf="showLoadingSpinner"></loading-spinner>
       <img [src]="apod?.url" [hidden]="loading" (load)="onLoad()">
-      
+      <p class="font-italic small">{{apod?.explanation}}</p>
     </div>
   </div>
 </div>
