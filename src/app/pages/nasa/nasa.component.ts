@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NasaService } from './nasa.service';
+import { Apod } from 'src/app/models/apod';
 
 @Component({
   selector: 'app-nasa',
@@ -7,7 +8,7 @@ import { NasaService } from './nasa.service';
   styleUrls: ['./nasa.component.css']
 })
 export class NasaComponent implements OnInit, OnDestroy {
-  apod: Object;
+  apod: Apod;
   showSpinner: boolean = true;
   showLoadingSpinner: boolean = true;
   loading: boolean = true
@@ -24,6 +25,7 @@ export class NasaComponent implements OnInit, OnDestroy {
       .subscribe(data => {
         this.apod = data;
         this.showSpinner = false;
+        console.log(data)
       },
         err => {
           console.error(err);

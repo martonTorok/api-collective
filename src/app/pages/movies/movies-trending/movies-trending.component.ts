@@ -7,12 +7,13 @@ import { MoviesService } from '../movies.service';
   styleUrls: ['./movies-trending.component.css']
 })
 export class MoviesTrendingComponent implements OnInit,OnDestroy {
-  movies = [];
+  movies = [];  
+  loadedPage: number = 1;
 
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit() {
-    this.getMoviesTrending(1);
+    this.getMoviesTrending(this.loadedPage);
   }
 
   getMoviesTrending(page: number) {
@@ -27,5 +28,10 @@ export class MoviesTrendingComponent implements OnInit,OnDestroy {
   }
 
   ngOnDestroy() {}
+
+  onScrollDown(): void {
+    this.loadedPage += 1;
+    this.getMoviesTrending(this.loadedPage);
+  }
 
 }

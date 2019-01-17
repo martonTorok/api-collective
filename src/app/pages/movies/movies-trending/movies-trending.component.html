@@ -1,9 +1,10 @@
-<div class="tab-pane fade show active" id="onair">
+<div class="tab-pane fade show active" id="trending" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollUpDistance]="1.5"
+[infiniteScrollThrottle]="50" (scrolled)="onScrollDown()">
   <loading-spinner *ngIf="showLoadingSpinner"></loading-spinner>
 
-<!-- 
+<div *ngFor="let grp of movies">
   <div class="card-deck">
-    <div class="card" *ngFor="let movie of movies?.results">
+    <div class="card" *ngFor="let movie of grp?.results.slice(0,4)">
       <img class="card-img-top" 
       (load)="onLoad()"
       src="{{movie?.poster_path == null ? '' : 'https://image.tmdb.org/t/p/original' + movie?.poster_path}}" alt="Card image cap">
@@ -16,7 +17,7 @@
   </div>
   <hr>
   <div class="card-deck">
-    <div class="card" *ngFor="let movie of movies?.results.slice(4, 8)">
+    <div class="card" *ngFor="let movie of grp?.results.slice(4, 8)">
       <img class="card-img-top"
       (load)="onLoad()"
        src=
@@ -31,7 +32,7 @@
   </div>
   <hr>
   <div class="card-deck">
-    <div class="card" *ngFor="let movie of movies?.results.slice(8, 12)">
+    <div class="card" *ngFor="let movie of grp?.results.slice(8, 12)">
       <img class="card-img-top"
       (load)="onLoad()"
       src="{{movie?.poster_path == null ? '' : 'https://image.tmdb.org/t/p/original' + movie?.poster_path}}" alt="Card image cap">
@@ -43,5 +44,33 @@
     </div>
   </div>
   <hr>
- -->
+  <div class="card-deck">
+      <div class="card" *ngFor="let movie of grp?.results.slice(12, 16)">
+        <img class="card-img-top"
+        (load)="onLoad()"
+        src="{{movie?.poster_path == null ? '' : 'https://image.tmdb.org/t/p/original' + movie?.poster_path}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ movie?.title}}</h5>
+          <p class="card-text">{{ movie?.overview}}</p>
+          <p class="card-text"><small class="text-muted">Released: {{movie?.release_date}}</small></p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="card-deck">
+        <div class="card" *ngFor="let movie of grp?.results.slice(16, 20)">
+          <img class="card-img-top"
+          (load)="onLoad()"
+          src="{{movie?.poster_path == null ? '' : 'https://image.tmdb.org/t/p/original' + movie?.poster_path}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ movie?.title}}</h5>
+            <p class="card-text">{{ movie?.overview}}</p>
+            <p class="card-text"><small class="text-muted">Released: {{movie?.release_date}}</small></p>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+</div>
+
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WeatherService } from './weather.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Chart } from 'chart.js';
+import { Weather } from 'src/app/models/weather';
 
 @Component({
   selector: 'app-weather',
@@ -10,10 +11,10 @@ import { Chart } from 'chart.js';
 })
 export class WeatherComponent implements OnInit, OnDestroy {
   currentDate: number;
-  currentWeatherData: Object;
+  currentWeatherData: Weather;
   weatherForm: FormGroup;
   city = 'Budapest';
-  fiveDayWeatherData: Object;
+  fiveDayWeatherData: Weather[];
   isValidCity: boolean = null;
   showSpinner: boolean = true;
 
@@ -53,9 +54,9 @@ export class WeatherComponent implements OnInit, OnDestroy {
       .subscribe(
         data => {
           this.fiveDayWeatherData = data;
-          let temp_max = data['list'].map(res => res.main.temp_max);
-          let temp_min = data['list'].map(res => res.main.temp_min);
-          let alldates = data['list'].map(res => res.dt)
+          let temp_max = data.map(res => res.temp_max);
+          let temp_min = data.map(res => res.temp_min);
+          let alldates = data.map(res => res.dt)
 
           let weatherDates = []
           alldates.forEach((res) => {

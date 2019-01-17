@@ -36,6 +36,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MoviesNewsComponent } from './pages/movies/movies-news/movies-news.component';
 import { MoviesOnairComponent } from './pages/movies/movies-onair/movies-onair.component';
 import { MoviesTrendingComponent } from './pages/movies/movies-trending/movies-trending.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { WeatherAdapter } from './models/weather';
 
 @NgModule({
   declarations: [
@@ -68,9 +70,10 @@ import { MoviesTrendingComponent } from './pages/movies/movies-trending/movies-t
     ReactiveFormsModule,
     RouterModule,
     DeferLoadModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    ScrollingModule
   ],
-  providers: [AuthService, WeatherService, ShowsService, NasaService, PicflowService, MoviesService],
+  providers: [AuthService, WeatherService, ShowsService, NasaService, PicflowService, MoviesService, WeatherAdapter],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

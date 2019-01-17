@@ -1,9 +1,16 @@
-<div class="image col-sm-12" *ngFor="let image of pictureData?.photos; let i = index" (deferLoad)="image.show = true">
-  
+<div class="col- images">
+  <h3>Curated picture flow</h3>
+
+  <div class="image col-6" *ngFor="let image of pictureData?.photos; let i = index" (deferLoad)="image.show = true">
+
     <ng-container *ngIf="image.show">
       <loading-spinner *ngIf="isLoaded(i)"></loading-spinner>
-      <img [hidden]="isLoaded(i)" (load)="onLoad(i)" src="{{image?.src.original}}" class="pexelPic">
+      <a href="{{image?.url}}" target="_blank" rel="noopener noreferrer">
+        <img [hidden]="isLoaded(i)" (load)="onLoad(i)" src="{{image?.src.medium}}" class="pexelPic">
+      </a>
     </ng-container>
-  
-  <hr>
+
+    <hr>
+  </div>
+
 </div>

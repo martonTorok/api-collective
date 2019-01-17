@@ -32,12 +32,12 @@
 
     <div class="col-3">
       <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-        <div class="card-header">{{ currentWeatherData?.name }}, {{ currentWeatherData?.sys.country}}</div>
+        <div class="card-header">{{ currentWeatherData?.name }}, {{ currentWeatherData?.country}}</div>
         <div class="card-body">
           <h4 class="card-title">{{currentDate | date:'fullDate'}}</h4>
-          <p class="card-text">Current: <b>{{ currentWeatherData?.main.temp }} °C</b></p>
-          <p class="card-text">Min: <b>{{ currentWeatherData?.main.temp_min }} °C</b></p>
-          <p class="card-text">Max: <b>{{ currentWeatherData?.main.temp_max }} °C</b></p>
+          <p class="card-text">Current: <b>{{ currentWeatherData?.temp }} °C</b></p>
+          <p class="card-text">Min: <b>{{ currentWeatherData?.temp_min }} °C</b></p>
+          <p class="card-text">Max: <b>{{ currentWeatherData?.temp_max }} °C</b></p>
         </div>
       </div>
     </div>
@@ -65,13 +65,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let day of fiveDayWeatherData?.list; i as index">
-        <td scope="row">{{ day?.dt_txt | date:'medium' }}</td>
-        <td>{{ day?.main.temp }} °C</td>
-        <td>{{ day?.main.temp_min }} °C</td>
-        <td>{{ day?.main.temp_max }} °C</td>
-        <td>{{ day?.main.humidity }} %</td>
-        <td>{{ day?.clouds.all }} %</td>
+      <tr *ngFor="let day of fiveDayWeatherData; i as index">
+        <td scope="row">{{ day?.dt_text | date:'medium' }}</td>
+        <td>{{ day?.temp }} °C</td>
+        <td>{{ day?.temp_min }} °C</td>
+        <td>{{ day?.temp_max }} °C</td>
+        <td>{{ day?.humidity }} %</td>
+        <td>{{ day?.clouds }} %</td>
       </tr>
     </tbody>
   </table>

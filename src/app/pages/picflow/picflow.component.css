@@ -1,9 +1,10 @@
 .pexelPic {
-    height: 75vh;
+    height: 40vh;
     transition:transform 0.25s ease;
     margin-left: auto;
 	margin-right: auto;
-	display: block;
+    display: block;
+    border-radius: 25px;
 }
 
 .pexelPic:hover {
@@ -12,9 +13,12 @@
 }
 
 .image {
-    min-height: 75vh;
+    min-height: 300px;;
     display: inline-block;
     align-content: center;
     padding-top: 10px;
 }
 
+.images {
+    text-align: center;
+}
