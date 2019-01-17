@@ -44,7 +44,7 @@ export class ShowsService {
 
   getSelectedId(): Observable<number> {
     return new Observable<number>(observer => {
-      observer.next(localStorage.getItem('selectedId') ? +localStorage.getItem('selectedId') : 100)
+      observer.next(localStorage.getItem('selectedId') ? +localStorage.getItem('selectedId') : 44217)
     })
   }
 }

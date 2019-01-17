@@ -38,12 +38,14 @@ export class ShowsComponent implements OnInit, OnDestroy {
           this.showNotFound = true;
         });
   }
-
+  
   loadPage(page: number): void {
     this.currentPage = page;
     localStorage.setItem('currentPage', this.currentPage.toString());
     this.getPopularTVShows(this.currentPage);
-
+    let selectedId; 
+    this.showsService.getSelectedId().subscribe(data => selectedId = data);
+    this.router.navigate(['.', selectedId], { relativeTo: this.route, queryParams: {'page': this.currentPage}})
   }
 
   onSelect(event: Event): void {
@@ -56,5 +58,8 @@ export class ShowsComponent implements OnInit, OnDestroy {
         window.clearInterval(scrollToTop);
       }
     }, 16);
+    let selectedId; 
+    this.showsService.getSelectedId().subscribe(data => selectedId = data);
+    this.router.navigate(['.', selectedId], { relativeTo: this.route, queryParams: {'page': this.currentPage}})
   }
 }
