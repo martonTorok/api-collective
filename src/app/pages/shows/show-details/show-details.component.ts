@@ -40,7 +40,6 @@ export class ShowDetailsComponent implements OnInit, OnDestroy {
         this.showDetails = data;
         this.showSpinner = false;
         this.showNotFound = false;
-        console.log(data);
       },
         err => {
           this.showNotFound = true;

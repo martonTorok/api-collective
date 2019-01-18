@@ -1,5 +1,5 @@
 img {
-    height: 80vh;
+    height: 60vh;
     transition:transform 0.25s ease;
 
 }
@@ -17,6 +17,11 @@ img:hover {
 }
 
 .row {
+    text-align: center;
+}
+.col {
+    
+    display: inline-block;
     text-align: center;
 }
 

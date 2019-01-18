@@ -50,7 +50,7 @@ export class WeatherComponent implements OnInit, OnDestroy {
   }
 
   getFiveDayWeatherData(city: string) {
-    this.weatherService.getFiveDayWeatherBycity(city)
+    this.weatherService.getFiveDayWeatherByCity(city)
       .subscribe(
         data => {
           this.fiveDayWeatherData = data;

@@ -35,7 +35,6 @@ export class PicflowComponent implements OnInit, OnDestroy {
         for (let i = 0; i < this.pictureData['photos'].length; i++) {
           this.pictureData['photos'][i].show = false;
           this.pictureData['photos'][i].loading = true;
-          /* console.log(this.pictureData['photos'][i]) */
         }
         this.showLoadingSpinner = false;
         console.log(data)

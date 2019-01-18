@@ -25,7 +25,6 @@ export class NasaComponent implements OnInit, OnDestroy {
       .subscribe(data => {
         this.apod = data;
         this.showSpinner = false;
-        console.log(data)
       },
         err => {
           console.error(err);

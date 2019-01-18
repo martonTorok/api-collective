@@ -22,7 +22,7 @@ export class WeatherService {
       )
   }
 
-  getFiveDayWeatherBycity(city: string): Observable<Weather[]> {
+  getFiveDayWeatherByCity(city: string): Observable<Weather[]> {
     const url = "http://api.openweathermap.org/data/2.5/forecast?q=";
     return this.http
       .get<any>(url + city + "&appid=" + this.openWeatherMapAPIKey + "&units=metric&cnt=40")
