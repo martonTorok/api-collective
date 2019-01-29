@@ -7,10 +7,6 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header/header.component';
-import { AuthService } from 'src/auth/auth.service';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FooterComponent } from './footer/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { WeatherComponent } from './pages/weather/weather.component';
@@ -38,6 +34,10 @@ import { MoviesOnairComponent } from './pages/movies/movies-onair/movies-onair.c
 import { MoviesTrendingComponent } from './pages/movies/movies-trending/movies-trending.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { WeatherAdapter } from './models/weather';
+import { TodoComponent } from './pages/todo/todo.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AuthLocalService } from '../auth/auth-local.service';
+import { AuthGuardService } from 'src/auth/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -58,14 +58,13 @@ import { WeatherAdapter } from './models/weather';
     MoviesNewsComponent,
     MoviesOnairComponent,
     MoviesTrendingComponent,
+    TodoComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
@@ -73,7 +72,7 @@ import { WeatherAdapter } from './models/weather';
     InfiniteScrollModule,
     ScrollingModule
   ],
-  providers: [AuthService, WeatherService, ShowsService, NasaService, PicflowService, MoviesService, WeatherAdapter],
+  providers: [AuthLocalService,AuthGuardService, WeatherService, ShowsService, NasaService, PicflowService, MoviesService, WeatherAdapter],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

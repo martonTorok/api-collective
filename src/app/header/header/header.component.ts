@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { AuthService } from 'src/auth/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ShowsService } from 'src/app/pages/shows/shows.service';
+import { AuthLocalService } from 'src/auth/auth-local.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   showUtilityMenu: boolean = false;
   showEntertainmentMenu: boolean = false;
 
-  constructor(private authService: AuthService, private showsService: ShowsService) { }
+  constructor(private authService: AuthLocalService, private showsService: ShowsService) { }
 
   ngOnInit(): void {
     this.searchForm = new FormGroup({
@@ -68,9 +68,6 @@ export class HeaderComponent implements OnInit {
     } else {
       this.showEntertainmentMenu = false;
     }
-  }
-  onLogin(): void {
-    this.authService.signInWithGoogle();
   }
 
   onLogout(): void {

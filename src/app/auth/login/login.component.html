@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group has-danger">
+          <label for="email" class="form-control-label">
+            Email:
+          </label>
+          <input type="text" id="email" formControlName="email" class="form-control" placeholder="Email" 
+          [ngClass]="{'is-invalid': !isValidEmail, 'is-valid':isValidEmail}">
+          <div class="invalid-feedback">Invalid email.</div>
+        </div>
+        <div class="form-group has-danger">
+          <label for="password" class="form-control-label">
+            Password:
+          </label>
+          <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password"
+            [ngClass]="{'is-invalid': !isValidPassword, 'is-valid':isValidPassword}">
+          <div class="invalid-feedback">Invalid password.(Min 6 characters)</div>
+        </div>
+        <button class="btn btn-warning" type="submit">Login</button>
+      </form>
+      <p *ngIf="!isLoginSuccessful">Credentials not valid. Try again.</p>
+    </div>
+  </div>
+</div>
