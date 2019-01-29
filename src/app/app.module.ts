@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-import { environment } from '../environments/environment';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,8 +9,6 @@ import { FooterComponent } from './footer/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { WeatherComponent } from './pages/weather/weather.component';
 import { HttpClientModule } from '@angular/common/http';
-import { KeysPipe } from './shared/keys-pipe.pipe';
-import { TemperatureConverterPipe } from './shared/temperature-converter.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NasaComponent } from './pages/nasa/nasa.component';
 import { ShowsComponent } from './pages/shows/shows.component';
@@ -46,8 +42,6 @@ import { AuthGuardService } from 'src/auth/auth-guard.service';
     FooterComponent,
     HomeComponent,
     WeatherComponent,
-    KeysPipe,
-    TemperatureConverterPipe,
     NasaComponent,
     ShowsComponent,
     LoadingSpinnerComponent,
