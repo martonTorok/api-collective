@@ -8,7 +8,7 @@ import { HeaderComponent } from './header/header/header.component';
 import { FooterComponent } from './footer/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { WeatherComponent } from './pages/weather/weather.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NasaComponent } from './pages/nasa/nasa.component';
 import { ShowsComponent } from './pages/shows/shows.component';
@@ -66,7 +66,9 @@ import { AuthGuardService } from 'src/auth/auth-guard.service';
     InfiniteScrollModule,
     ScrollingModule
   ],
-  providers: [AuthLocalService,AuthGuardService, WeatherService, ShowsService, NasaService, PicflowService, MoviesService, WeatherAdapter],
+  providers: [
+    AuthLocalService, AuthGuardService, WeatherService, ShowsService,
+     NasaService, PicflowService, MoviesService, WeatherAdapter],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
